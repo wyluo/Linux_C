@@ -34,8 +34,14 @@ int main(int argc, char* argv[])
 int main(int argc, char* argv[])
 {
 	josephus_list* jose_node = NULL;
+	int location = 3;
 
 	jose_node = JosePhus_List_Create(JOSE_NUM);
+	JosePhus_List_Show(jose_node);
+
+	JosePhus_List_Kill(&jose_node, location);
+
+	printf("current node list is : ");
 	JosePhus_List_Show(jose_node);
 
 	return 0;

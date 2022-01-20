@@ -10,5 +10,6 @@ typedef struct JosePhus_list {
 
 josephus_list* JosePhus_List_Create(int num);
 void JosePhus_List_Show(josephus_list* curr_node);
+void JosePhus_List_Kill(josephus_list **curr_node, int location);
 
 #endif
