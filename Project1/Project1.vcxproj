@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\josephus.c" />
     <ClCompile Include="..\src\main.c" />
     <ClCompile Include="..\src\polynomial.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\josephus.h" />
     <ClInclude Include="..\include\polynomial.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

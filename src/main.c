@@ -1,4 +1,6 @@
 #include <stdio.h>
+
+#if 0
 #include "../include/polynomial.h"
 
 int main(int argc, char* argv[])
@@ -22,6 +24,19 @@ int main(int argc, char* argv[])
 	polynomial_union(node_ptr1, node_ptr2);
 	printf("%d\n", __LINE__);
 	polynomial_show(node_ptr1);
+
+	return 0;
+}
+#endif
+
+#include "../include/josephus.h"
+
+int main(int argc, char* argv[])
+{
+	josephus_list* jose_node = NULL;
+
+	jose_node = JosePhus_List_Create(JOSE_NUM);
+	JosePhus_List_Show(jose_node);
 
 	return 0;
 }
