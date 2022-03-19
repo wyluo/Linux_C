@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#if 0
+
 josephus_list* JosePhus_List_Create(int num)
 {
 	josephus_list* curr_node = NULL, *newnode = NULL, *node = NULL;
@@ -69,3 +71,4 @@ void JosePhus_List_Kill(josephus_list **curr_node, int location)
 
 	printf("\n");
 }
+#endif

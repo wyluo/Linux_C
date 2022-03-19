@@ -1,2 +1,7 @@
-﻿  main.c
+﻿  josephus.c
+  main.c
+E:\project\vs_code\Project1\src\main.c(62,19): warning C4101: “dataptr”: 未引用的局部变量
+  polynomial.c
+  tree.c
+  正在生成代码...
   Project1.vcxproj -> E:\project\vs_code\Project1\x64\Debug\Project1.exe
