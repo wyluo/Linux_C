@@ -31,6 +31,9 @@ int main(int argc, char* argv[])
 
 	printf("\n\n");
 
+	travel(tree);
+
+#if 0
 	int tmp_id = 5;
 	delete(&tree, tmp_id);
 	draw(tree);
@@ -38,7 +41,7 @@ int main(int argc, char* argv[])
 	printf("rebalance\n\n");
 	balance(&tree);
 	draw(tree);
-
+#endif
 #if 0
 	int tmp_id = 9;
 	dataptr = Find(tree, tmp_id);

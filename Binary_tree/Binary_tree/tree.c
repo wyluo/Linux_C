@@ -190,3 +190,37 @@ void delete(struct score_node_st** root, int id)
 	free(current_node);
 }
 
+/*
+ *先序遍历
+ */
+void travel(struct score_node_st* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	print_s(&root->data);
+
+	travel(root->left);
+
+	travel(root->right);
+}
+
+/*中序遍历
+*	travel(root->left);
+*	print_s(&root->data);
+*	travel(root->right);
+*/
+
+/*后序遍历
+*travel(root->left);
+*travel(root->right);
+*print_s(&root->data);
+*/
+
+/*层序遍历*/
+void travel_level(struct score_node_st* root)
+{
+
+}
+

@@ -28,6 +28,7 @@ static struct score_node_st* find_max(struct score_node_st* root);
 static void turn_right(struct score_node_st** root);
 void balance(struct score_node_st** root);
 void delete(struct score_node_st** root, int id);
+void travel(struct score_node_st* root);
 
 
 #endif
