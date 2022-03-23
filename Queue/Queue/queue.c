@@ -104,3 +104,37 @@ void Destory(queue *t_queue)
     free(t_queue);
 }
 
+/*
+ *链式存储
+  */
+ QUEUE *Link_Storage_Create(int initsize)
+ {
+    return llist_create(initsize); 
+ }
+
+/*
+ *入队
+ */
+ int Link_Storage_Enter_queue(QUEUE *ptr, const void *data)
+ {
+     return llist_insert(ptr, data, LLIST_BACKWARD);  
+ }
+
+static int always_match(const void *p1, const void *p2)
+{
+    return 0;
+}
+
+ /*
+  *出队
+  */
+ int Link_Storage_Exit_queue(QUEUE *ptr, void *data)
+ {
+     return llist_fetch(ptr, (void *)0, always_match, data);
+ }
+
+ void Link_Storage_Destory_queue(QUEUE *ptr)
+ {
+     llist_destory(ptr);
+ }
+

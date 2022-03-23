@@ -2,6 +2,7 @@
 #define QUEUE_H
 
 #include <stdbool.h>
+#include "llist.h"
 
 typedef int Datatype;
 #define datasize 16
@@ -21,5 +22,16 @@ int Exit_queue(queue* t_queue, Datatype* data);
 void Travel_queue(queue *t_queue);
 void Clear_queue(queue* t_queue);
 void Destory(queue *t_queue);
+
+/*
+ *链式存储
+ */
+typedef LLIST QUEUE;
+
+QUEUE *Link_Storage_Create(int initsize);
+int Link_Storage_Enter_queue(QUEUE *ptr, const void *data);
+static int always_match(const void *p1, const void *p2);
+int Link_Storage_Exit_queue(QUEUE *ptr, void *data);
+void Link_Storage_Destory_queue(QUEUE *ptr);
 
 #endif

@@ -1,2 +1,3 @@
 ﻿  main.c
+E:\project\vs_code\Data_struct\Queue\Queue\main.c(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   Queue.vcxproj -> E:\project\vs_code\Data_struct\Queue\x64\Debug\Queue.exe
