@@ -9,3 +9,8 @@ void print_s(void *record)
     printf("%d--%s--%d\n", t_score->id, t_score->name, t_score->data1);
     //printf("%d\n", t_score->id);
 }
+
+int always_match(const void *p1, const void *p2)
+{
+    return 0;
+}

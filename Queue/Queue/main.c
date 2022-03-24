@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "queue.h"
@@ -48,6 +48,7 @@ int main(int argc, char* argv[])
 }
 #endif
 
+#if 0
 /*
  *链式队列的实现
  */
@@ -89,6 +90,55 @@ int main(int argc, char *argv[])
 	}
 
 	Link_Storage_Destory_queue(qu);
+
+	return 0;
+}
+#endif
+
+/*
+ *链式存储栈---实现
+ */
+#include "stack.h"
+
+int main(int argc, char *argv[])
+{
+	SCORE t_score;
+	STACK *t_stack = NULL;
+
+	t_stack = Link_Storage_stack_create(sizeof(SCORE));
+	if(t_stack == NULL)
+	{
+		printf("malloc error\n");
+		return 0;
+	}
+
+	printf("stack start push\n");
+	for(int i = 0; i < 6; i++)
+	{
+		t_score.id = i;
+		snprintf(t_score.name, NAMESIZE, "name%d", i);
+		t_score.data1 = rand() % 100;
+
+		if(Link_Storage_stack_push(t_stack, &t_score) != 0)
+		{
+			printf("Link Storage stack push error\n");
+			break;
+		}
+		print_s(&t_score);
+	}
+
+	printf("stack start pop\n");
+
+	while(1)
+	{
+		if(Link_Storage_stack_pop(t_stack, &t_score) != 0)
+		{
+			break;
+		}
+		print_s(&t_score);
+	}
+
+	Link_Storage_stack_destory(t_stack);
 
 	return 0;
 }

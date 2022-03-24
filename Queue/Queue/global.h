@@ -11,5 +11,6 @@ typedef struct score_node_st
 }SCORE;
 
 void print_s(void *record);
+int always_match(const void *p1, const void *p2);
 
 #endif

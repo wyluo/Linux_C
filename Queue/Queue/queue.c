@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "queue.h"
+#include "global.h"
 
 /*
  *note: empty condiction is : head == tail
@@ -119,11 +120,6 @@ void Destory(queue *t_queue)
  {
      return llist_insert(ptr, data, LLIST_BACKWARD);  
  }
-
-static int always_match(const void *p1, const void *p2)
-{
-    return 0;
-}
 
  /*
   *出队
