@@ -139,10 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="global.c" />
+    <ClCompile Include="llist.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="queue.c" />
     <ClCompile Include="tree.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="global.h" />
+    <ClInclude Include="llist.h" />
+    <ClInclude Include="queue.h" />
     <ClInclude Include="tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

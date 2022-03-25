@@ -95,6 +95,7 @@ int main(int argc, char *argv[])
 }
 #endif
 
+#if 0
 /*
  *链式存储栈---实现
  */
@@ -142,3 +143,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+#endif

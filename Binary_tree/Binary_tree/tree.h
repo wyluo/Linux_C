@@ -2,6 +2,7 @@
 #define __TREE_H
 
 #define NAME_SIZE 32
+
 struct score_st
 {
 	int id;
@@ -29,6 +30,7 @@ static void turn_right(struct score_node_st** root);
 void balance(struct score_node_st** root);
 void delete(struct score_node_st** root, int id);
 void travel(struct score_node_st* root);
+void travel_level(struct score_node_st* root);
 
 
 #endif

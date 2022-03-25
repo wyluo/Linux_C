@@ -31,7 +31,8 @@ int main(int argc, char* argv[])
 
 	printf("\n\n");
 
-	travel(tree);
+	//travel(tree);
+	travel_level(tree);
 
 #if 0
 	int tmp_id = 5;

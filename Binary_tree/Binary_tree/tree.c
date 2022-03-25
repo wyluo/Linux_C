@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "queue.h"
+#include "global.h"
 
 struct score_node_st* tree = NULL;
 
@@ -179,11 +181,11 @@ void delete(struct score_node_st** root, int id)
 	current_node = *newnode;
 	if (current_node->left == NULL)
 	{
-		*newnode = current_node->right;//right chil replace
+		*newnode = current_node->right;//right child replace
 	}
 	else
 	{
-		*newnode = current_node->left;//left chil replace
+		*newnode = current_node->left;//left child replace
 		find_max(current_node->left)->right = current_node->right;
 	}
 
@@ -221,6 +223,37 @@ void travel(struct score_node_st* root)
 /*²ãÐò±éÀú*/
 void travel_level(struct score_node_st* root)
 {
+	QUEUE *ptr = NULL;
+	struct score_node_st* current = NULL;
+	int ret = 0;
+
+	ptr = Link_Storage_Create(sizeof(struct score_node_st *));
+	if (ptr == NULL)
+	{
+		return;
+	}
+
+	Link_Storage_Enter_queue(ptr, &root);
+
+	while (1)
+	{
+		ret = Link_Storage_Exit_queue(ptr, &current);
+		if (ret == -1)
+		{
+			break;
+		}
+		global_print_s(&current->data);
+
+		if (current->left != NULL)
+			Link_Storage_Enter_queue(ptr, &current->left);
+
+		if (current->right != NULL)
+			Link_Storage_Enter_queue(ptr, &current->right);
+
+
+	}
+
+	Link_Storage_Destory_queue(ptr);
 
 }
 

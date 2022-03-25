@@ -21,9 +21,27 @@
     <ClCompile Include="tree.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="queue.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="global.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="llist.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="llist.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
