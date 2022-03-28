@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
 	struct score_st t_score_st, *dataptr = NULL;
 	struct score_node_st* tree = NULL;
 	int i = 0;
+
 	for (i = 0; i < sizeof(arry) / sizeof(*arry); i++)
 	{
 		t_score_st.id = arry[i];
@@ -26,13 +27,13 @@ int main(int argc, char* argv[])
 
 	//printf("\n\n");
 
-	balance(&tree);
+	//balance(&tree);
 	draw(tree);
 
 	printf("\n\n");
 
 	//travel(tree);
-	travel_level(tree);
+	//travel_level(tree);
 
 #if 0
 	int tmp_id = 5;

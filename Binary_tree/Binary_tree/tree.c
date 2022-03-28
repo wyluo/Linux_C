@@ -34,6 +34,49 @@ int Insert(struct score_node_st** root, struct score_st* data)
 	else
 		return Insert(&(*root)->right, data);
 }
+#if 1
+/*
+ *加入数组
+ */
+struct BiTNode* BiTNode_create(struct BiTNode** root, int value)
+{
+	if (*root == NULL)
+	{
+		*root = (struct BiTNode*)malloc(sizeof(struct BiTNode));
+		if (*root == NULL)
+		{
+			printf("out of menory, press any key to quie...\n");
+			exit(0);
+		}
+
+		(*root)->data = value;
+		(*root)->lchild = (*root)->rchild = NULL;
+		(*root)->arry_order = 0;
+	}
+	if (value < (*root)->data)
+	{
+		BiTNode_create(&(*root)->lchild, value);
+	}
+	else
+	{
+		BiTNode_create(&(*root)->rchild, value);
+	}
+	return (*root);
+}
+
+static int length = 0;
+//获取二叉树总的节点数并返回
+int nodeNum(struct BiTNode* root)
+{
+	if (root != NULL)
+	{
+		length++;
+		nodeNum(root->lchild);
+		nodeNum(root->rchild);
+	}
+	return length;
+}
+#endif
 
 struct score_st* Find(struct score_node_st* root, int id)
 {
@@ -254,6 +297,34 @@ void travel_level(struct score_node_st* root)
 	}
 
 	Link_Storage_Destory_queue(ptr);
-
 }
+
+/*
+static int Binary_Save_(struct score_node_st* root)
+{
+	printf("(");
+
+	if (root == NULL)//当前为叶子结点
+	{
+		printf(")");
+		return 0;
+	}
+
+	
+
+	Binary_Save_(root->left);
+
+	Binary_Save_(root->right);
+
+	printf(")");
+}
+
+int Binary_Save(struct score_node_st* root)
+{
+	if (root == NULL)
+		return -1;
+
+	Binary_Save_(root);
+}
+*/
 
