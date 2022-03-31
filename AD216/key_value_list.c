@@ -52,3 +52,28 @@ key_value_list_t KeyValueList_Create(void)
     memset(list, 0, size);//初始化list
     return list;
 }
+
+void KeyValueList_Destory(key_value_list_t *list)
+{
+    PanicNull(list);
+    KeyValueList_RemoveAll(*list);
+    free(*list);
+    *list = NULL;
+}
+
+void KeyValueList_RemoveAll(key_value_list_t list)
+{
+    large_kv_element_t *head = list->head;
+    while(head)//直到将链表都释放，退出循环
+    {
+        large_kv_element_t *tmp = head;
+        head = head->next;
+        free(tmp);
+    }
+    //将结构体中的成员都释放
+    free(list->keys);
+    free(list->values8);
+    free(list->values16);
+    free(list->values32);
+    memset(list, 0, sizeof(*list));//初始化结构体
+}
