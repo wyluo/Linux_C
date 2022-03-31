@@ -78,7 +78,7 @@ void KeyValueList_RemoveAll(key_value_list_t list)
     memset(list, 0, sizeof(*list));//初始化结构体
 }
 
-static bool KeyValueList_Get(key_value_list_t list, key_value_list_t key, void **value_p, size_t *size_p)
+static bool KeyValueList_Get(key_value_list_t list, key_value_key_t key, void **value_p, size_t *size_p)
 {
     unsigned index;
     uint16 *keys;
@@ -115,7 +115,7 @@ static bool KeyValueList_Get(key_value_list_t list, key_value_list_t key, void *
             if(index < list->len16)
             {
                 *size_p = sizeof(uint16);
-                *value_p = (void*)(list->value16 + index);
+                *value_p = (void*)(list->values16 + index);
                 return TRUE;
             }
 
@@ -128,14 +128,14 @@ static bool KeyValueList_Get(key_value_list_t list, key_value_list_t key, void *
     return FALSE;
 }
 
-static bool KeyValueList_IsSet(key_value_list_t list, key_value_list_t key)
+static bool KeyValueList_IsSet(key_value_list_t list, key_value_key_t key)
 {
     size_t size;
     void *addr;
     return KeyValueList_Get(list, key, &addr, &size);
 }
 
-bool KeyValueList_Add(key_value_list_t list, key_value_list_t key, const void *value, size_t size)
+bool KeyValueList_Add(key_value_list_t list, key_value_key_t key, const void *value, size_t size)
 {
     bool success = FALSE;
 
@@ -147,6 +147,7 @@ bool KeyValueList_Add(key_value_list_t list, key_value_list_t key, const void *v
     }
     return success;
 }
+
 
 
 

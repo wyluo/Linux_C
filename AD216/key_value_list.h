@@ -4,8 +4,11 @@
 #include "types.h"
 #include <stdbool.h>
 
-/* !brief Opaque type for a key-value list object. */
+/*! \brief Opaque type for a key-value list object. */
 typedef struct key_value_list_tag *key_value_list_t;//结构体指针
+
+/*! \brief The key type is a 16bit unsigned integer. */
+typedef uint16 key_value_key_t;
 
 /*! \brief Create a key-value list.
 
