@@ -148,6 +148,67 @@ bool KeyValueList_Add(key_value_list_t list, key_value_key_t key, const void *va
     return success;
 }
 
+void *KeyValueList_GetSized(key_value_list_t list, key_value_key_t key, size_t size)
+{
+    unsigned index;
+    uint16 *keys;
+    large_kv_element_t *ele;
 
+    PanicNull(list);
+
+    keys = list->keys;
+
+    switch(size)
+    {
+        case sizeof(uint8):
+            for(index = 0; index < list->len8; index)
+            {
+                if(*keys++ == key)
+                {
+                    return list->values8 + index;
+                }
+            }
+            break;
+
+        case sizeof(uint16):
+            keys += list->len8;
+            for(index = 0; index < list->len16; index++)
+            {
+                if(*keys++ == key)
+                {
+                    return list->values16 + index;
+                }
+            }
+            break;
+
+        case sizeof(uint32):
+            keys += list->len8;
+            keys += list->len16;
+            for(index = 0; index < list->len32; index++)
+            {
+                if(*keys++ == key)
+                {
+                    return list->values32 + index;
+                }
+            }
+            break;
+
+        default:
+            /* Key not found in fixed type list, now search in dynamic list */
+            for(ele = list->head; ele != NULL; ele = ele->next)
+            {
+                if(ele->key == key)
+                {
+                    size = ele->len;
+                    return ele->data;
+                }
+            }
+            break;
+    }
+    /* Key not found based on size, logical error if the key exists with an
+       unexpected size */
+    PanicFalse(!KeyValueList_IsSet(list, key));
+    return NULL;
+}
 
 

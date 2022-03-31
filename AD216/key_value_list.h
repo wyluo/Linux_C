@@ -64,7 +64,7 @@ static bool KeyValueList_IsSet(key_value_list_t list, key_value_list_t key);
     \note This function should be used in preference to KeyValueList_Get if
     the size of the object is known.
 */
-static bool KeyValueList_Get(key_value_list_t list, key_value_list_t key, void **value_p, size_t *size_p)
+static bool KeyValueList_Get(key_value_list_t list, key_value_list_t key, void **value_p, size_t *size_p);
 
 /*! \brief Add a key-value pair to a key-value list.
 
@@ -86,5 +86,27 @@ static bool KeyValueList_Get(key_value_list_t list, key_value_list_t key, void *
     \return bool TRUE if key-value was added successfully; FALSE otherwise.
 */
 bool KeyValueList_Add(key_value_list_t list, key_value_list_t key, const void *value, size_t size);
+
+/*! \brief Get the value (with an expected size) for a key in a key-value list.
+
+    The value is returned as a pointer to the buffer owned by the key-value
+    pair.
+
+    If the key does not exist the pointer to the buffer will not be modified.
+
+    The function will panic if an item with the same key is found with a size
+    different to the size specified.
+
+    \param[in] list Key-value list to search in.
+    \param[in] key Kyeto search for.
+    \param[in] size The expected size of the key value.
+
+    \return value The pointer to the key's value, or NULL is not found.
+
+    \note This function should be used in preference to KeyValueList_Get if
+    the size of the object is known.
+*/
+void *KeyValueList_GetSized(key_value_list_t list, key_value_key_t key, size_t size)
+
 
 #endif
