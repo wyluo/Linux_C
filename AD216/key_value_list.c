@@ -77,3 +77,76 @@ void KeyValueList_RemoveAll(key_value_list_t list)
     free(list->values32);
     memset(list, 0, sizeof(*list));//初始化结构体
 }
+
+static bool KeyValueList_Get(key_value_list_t list, key_value_list_t key, void **value_p, size_t *size_p)
+{
+    unsigned index;
+    uint16 *keys;
+    large_kv_element_t *ele;
+
+    PanicNull(list);
+    PanicNull(value_p);
+    PanicNull(size_p);
+
+    for(ele = list->head; ele != NULL; ele = ele->next)//链表遍历，使用next指针
+    {
+        if(ele->key == key)
+        {
+            *size_p = ele->len;
+            *value_p = ele->data;
+            return TRUE;
+        }
+    }
+
+    keys = list->keys;
+
+    for(index = 0; index < list->len_keys; index++)
+    {
+        if(*keys++ == key)
+        {
+            if(index < list->len8)
+            {
+                *size_p = sizeof(uint8);
+                *value_p = (void*)(list->values8 + index);
+                return TRUE;
+            }
+
+            index -= list->len8;
+            if(index < list->len16)
+            {
+                *size_p = sizeof(uint16);
+                *value_p = (void*)(list->value16 + index);
+                return TRUE;
+            }
+
+            index -= list->len16;
+            *size_p = sizeof(uint32);
+            *value_p = (void*)(list->values32 + index);
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+static bool KeyValueList_IsSet(key_value_list_t list, key_value_list_t key)
+{
+    size_t size;
+    void *addr;
+    return KeyValueList_Get(list, key, &addr, &size);
+}
+
+bool KeyValueList_Add(key_value_list_t list, key_value_list_t key, const void *value, size_t size)
+{
+    bool success = FALSE;
+
+    PanicNull(list);
+
+    if(!KeyValueList_IsSet(list, key))
+    {
+        success = keyValueList_addKeyValuePair(list, key, value, size);
+    }
+    return success;
+}
+
+
+
