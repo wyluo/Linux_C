@@ -3,10 +3,16 @@
 
 #include <stdbool.h>
 #include "types.h"
+#include "message_.h"
 
 #define ARRY_MAX_LEN    (10)
 
 #define KEY_DOWN    0X01
+
+typedef struct
+{
+    TaskData key_task;
+}key_task_t;
 
 typedef struct T_KEY_HANDLE
 {
